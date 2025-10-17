@@ -43,8 +43,7 @@ npm start
 
 
 
-
-![Setup Image](C:/Users/Dell/Downloads/PERSONAL PROJECTS/CompanyTask/resume-system/image.png)
+![Setup Image](./assets/image.png)
 
 
 
