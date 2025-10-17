@@ -21,34 +21,40 @@ git clone https://github.com/ravitharun/resume-system.git
 cd resume-system
 
 
-## Backend Setup
-
-To install dependencies and start the backend:
-
-```bash
+# Navigate to the backend folder
 cd backend
+
+# Install all dependencies
 npm install
 
-## Frontend Setup
+# (Optional) Start the server using nodemon
+npx nodemon server.js
 
-To install dependencies and start the Frontend:
 
-```bash
-
+# Navigate to the frontend/UI folder
 cd UI
+
+# Install all dependencies
 npm install
 
-## Overall Setup Image
+# Start the React development server
+npm start
 
-![alt text](image.png)
+
+
+
+
+![Setup Image](C:/Users/Dell/Downloads/PERSONAL PROJECTS/CompanyTask/resume-system/image.png)
+
+
 
 
 
 
 ---
 
-This version is **safe to push now**, shows your setup progress, and looks professional.  
+This is **all in one page**, clean, and ready to push.  
 
-If you want, I can also **write a 3–4 line “Trial Task Note”** to attach with this GitHub link for submission.  
+If you want, I can also **write a 3–4 line professional “Trial Task Note”** to attach with this GitHub link for submission. It will make your submission look complete.  
 
 Do you want me to do that?
