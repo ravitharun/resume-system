@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios"
 const ResumeBuilder = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,9 +16,14 @@ const ResumeBuilder = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    alert("Resume saved successfully!");
+    // alert("Resume saved successfully!");
+    console.log(formData,'formData')
+    const Response=await axios.post("",{
+      formData:formData
+    })
+    console.log(Response.data.message)
     // Future: send data to backend here
   };
 
