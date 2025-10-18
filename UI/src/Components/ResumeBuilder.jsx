@@ -10,8 +10,9 @@ import {
 } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { FiGlobe } from "react-icons/fi";
+import ResumeData from "./ResumeData";
 
-const ResumeBuilder = () => {
+const ResumeBuilder = ({data}) => {
   pdfMake.vfs = pdfFonts.vfs; // ✅ FIXED LINE
   const [formData, setFormData] = useState({
     name: "",
@@ -28,6 +29,7 @@ const ResumeBuilder = () => {
     achievements: "",
   });
   const [showPreview, setShowPreview] = useState(true);
+  console.log(data,'data from the resumeBuilder.file')
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,87 +46,99 @@ const ResumeBuilder = () => {
 
   // ✅ PDF Generation using pdfmake
   const generatePDF = () => {
-    const dd = {
-      content: [
-        { text: formData.name || "Your Name", style: "header" },
-        { text: formData.Role || "Your Role", style: "subheader" },
-        "\n",
+   const dd = {
+  content: [
+    { text: formData.name || "Your Name", style: "header" },
+    { text: formData.Role || "Your Role", style: "subheader" },
+    "\n",
+    {
+      columns: [
         {
-          columns: [
+          width: "*",
+          text: [
+            { text: "📍 ", bold: true },
+            formData.Location || "Your Location",
+            "\n",
+            { text: "📧 ", bold: true },
+            formData.email || "yourname@example.com",
+            "\n",
+            { text: "📞 ", bold: true },
+            formData.phone || "Your Phone Number",
+          ],
+        },
+        {
+          width: "*",
+          text: [
+            { text: "💻 GitHub: ", bold: true },
             {
-              width: "*",
-              text: [
-                { text: "📍 ", bold: true },
-                formData.Location || "Your Location",
-                "\n",
-                { text: "📧 ", bold: true },
-                formData.email || "yourname@example.com",
-                "\n",
-                { text: "📞 ", bold: true },
-                formData.phone || "Your Phone Number",
-              ],
+              text: formData.GithubLink || "github.com/",
+              link: formData.GithubLink || "https://github.com/",
+              color: "blue",
             },
+            "\n",
+            { text: "🌐 Website: ", bold: true },
             {
-              width: "*",
-              text: [
-                { text: "💻 GitHub: ", bold: true },
-                <a href={formData.GithubLink}>GitHub</a> || "github.com/",
-                "\n",
-                { text: "🌐 Website: ", bold: true },
-                <a href={formData.PersonalLink}>Protifilo</a> ||
-                  "yourwebsite.com",
-                "\n",
-                { text: "🔗 LinkedIn: ", bold: true },
-                <a href={formData.formData.LinkedinLink}>Linkedin</a> ||
-                  "linkedin.com/in/",
-              ],
+              text: formData.PersonalLink || "protifilo.com",
+              link: formData.PersonalLink || "https://protifilo.com",
+              color: "blue",
+            },
+            "\n",
+            { text: "🔗 LinkedIn: ", bold: true },
+            {
+              text: formData.LinkedinLink || "linkedin.com/in/",
+              link: formData.LinkedinLink || "https://linkedin.com/in/",
+              color: "blue",
             },
           ],
         },
-        "\n",
-        { text: "Education", style: "sectionHeader" },
-        { text: formData.education || "Education details here..." },
-        "\n",
-        { text: "Skills", style: "sectionHeader" },
-        { text: formData.skills || "Skills details here..." },
-        "\n",
-        { text: "Projects", style: "sectionHeader" },
-        { text: formData.projects || "Projects details here..." },
-        "\n",
-        { text: "Achievements", style: "sectionHeader" },
-        { text: formData.achievements || "Achievements details here..." },
       ],
-      styles: {
-        header: {
-          fontSize: 22,
-          bold: true,
-          alignment: "center",
-          color: "#4F46E5",
-        },
-        subheader: {
-          fontSize: 16,
-          bold: true,
-          alignment: "center",
-          color: "#6D28D9",
-        },
-        sectionHeader: {
-          fontSize: 14,
-          bold: true,
-          margin: [0, 10, 0, 4],
-          color: "#4338CA",
-        },
-      },
-      defaultStyle: {
-        fontSize: 11,
-        color: "#333333",
-      },
-    };
-    console.log(dd,'dd')
+    },
+    "\n",
+    { text: "Education", style: "sectionHeader" },
+    { text: formData.education || "Education details here..." },
+    "\n",
+    { text: "Skills", style: "sectionHeader" },
+    { text: formData.skills || "Skills details here..." },
+    "\n",
+    { text: "Projects", style: "sectionHeader" },
+    { text: formData.projects || "Projects details here..." },
+    "\n",
+    { text: "Achievements", style: "sectionHeader" },
+    { text: formData.achievements || "Achievements details here..." },
+  ],
+  styles: {
+    header: {
+      fontSize: 22,
+      bold: true,
+      alignment: "center",
+      color: "#4F46E5",
+    },
+    subheader: {
+      fontSize: 16,
+      bold: true,
+      alignment: "center",
+      color: "#6D28D9",
+    },
+    sectionHeader: {
+      fontSize: 14,
+      bold: true,
+      margin: [0, 10, 0, 4],
+      color: "#4338CA",
+    },
+  },
+  defaultStyle: {
+    fontSize: 11,
+    color: "#333333",
+  },
+};
+
+    console.log(dd, "dd");
 
     pdfMake.createPdf(dd).download(`${formData.Role || "Resume"}.pdf`);
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-6 flex items-center justify-center">
       <div className="w-full max-w-6xl">
         <div className="flex justify-end mb-4 gap-5">
@@ -304,6 +318,8 @@ const ResumeBuilder = () => {
         </div>
       </div>
     </div>
+      <ResumeData></ResumeData>
+  </>
   );
 };
 
