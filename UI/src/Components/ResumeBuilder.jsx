@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from 'axios';
 const ResumeBuilder = () => {
   const [formData, setFormData] = useState({
     name: "",
+    Role: "",
+    Location: "",
+    GithubLink: "",
+    PersonalLink: "",
+    LinkedinLink: "",
     email: "",
     phone: "",
     education: "",
@@ -52,6 +57,10 @@ const ResumeBuilder = () => {
             {/* Input Fields */}
             {[
               { label: "Full Name", name: "name", type: "text" },
+              { label: "Role", name: "Role", type: "text" },
+              { label: "GithubLink", name: "GithubLink", type: "url" },
+              { label: "PersonalLink", name: "PersonalLink", type: "url" },
+              { label: "LinkedinLink", name: "LinkedinLink", type: "url" },
               { label: "Email", name: "email", type: "email" },
               { label: "Phone Number", name: "phone", type: "text" },
             ].map((field) => (
