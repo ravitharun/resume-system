@@ -37,8 +37,8 @@ const ResumeBuilder = ({data}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, "formData");
-    const Response = await axios.post("", {
+    // console.log(formData, "formData");
+    const Response = await axios.post("http://localhost:3000/api/resume/new", {
       formData: formData,
     });
     console.log(Response.data.message);

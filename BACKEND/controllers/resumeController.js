@@ -2,13 +2,21 @@ const Resume = require('../models/Resume');
 
 // Create resume
 exports.createResume = async (req, res) => {
- try{
-    console.log('Working the api')
-
- }
- catch(err){
+  try {
+    const { formData } = req.body;
+    const ResumeData = new Resume({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      education: formData.education,
+      skills: formData.skills,
+      projects: formData.projects,
+      achievements: formData.achievements
+    })
+  }
+  catch (err) {
     console.log(err.message)
- }
+  }
 };
 
 // Get resume by ID
