@@ -6,13 +6,13 @@ const resumeSchema = new mongoose.Schema({
   phone: { type: String, required: true },             // Phone number
   education: { type: String, required: true },         // Education details
   skills: [{ type: String, required: true }],         // Array of skills
-  projects: [
-    {
-      title: { type: String, required: true },        // Project title
-      description: { type: String },                  // Project description
-      link: { type: String }                           // Project link (optional)
-    }
-  ],
+  // projects: [
+  //   {
+  //     title: { type: String, required: false },        // Project title
+  //     description: { type: String },                  // Project description
+  //     link: { type: String }                           // Project link (optional)
+  //   }
+  // ],
   achievements: [{ type: String }],                   // Array of achievements
   summary: { type: String },                          // Optional auto-generated summary
 }, { timestamps: true });

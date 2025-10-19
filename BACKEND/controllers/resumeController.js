@@ -4,15 +4,18 @@ const Resume = require('../models/Resume');
 exports.createResume = async (req, res) => {
   try {
     const { formData } = req.body;
+    console.log(formData,'formData')
     const ResumeData = new Resume({
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
       education: formData.education,
       skills: formData.skills,
-      projects: formData.projects,
+      // projects: formData.projects,
       achievements: formData.achievements
     })
+    await ResumeData.save()
+    return res.json({ message: "The resume is saved ." })
   }
   catch (err) {
     console.log(err.message)
