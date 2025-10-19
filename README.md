@@ -1,4 +1,4 @@
-# Resume System – Dynamic Resume Builder
+# Resume System – Dynamic Resume Builder.
 
 ## Overview
 **Resume System** is a next-generation Resume Building & Career Ecosystem designed for students and professionals. This platform will eventually allow users to automatically generate **dynamic, verified resumes** based on real achievements from internships, projects, courses, hackathons, and skills.
